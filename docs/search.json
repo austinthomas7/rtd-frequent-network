@@ -53,7 +53,7 @@
     "href": "index.html#reproduce-this",
     "title": "How much of Denver can walk to frequent transit?",
     "section": "Reproduce this",
-    "text": "Reproduce this\ngit clone https://github.com/YOUR-USERNAME/rtd-frequent-network\nThen run R/00_setup.R once, run_all.R, and quarto render. All code is on GitHub."
+    "text": "Reproduce this\ngit clone https://github.com/austinthomas7/rtd-frequent-network\nThen run R/00_setup.R once, run_all.R, and quarto render. All code is on GitHub."
   },
   {
     "objectID": "additional-data.html",

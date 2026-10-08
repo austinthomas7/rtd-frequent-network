@@ -291,7 +291,7 @@ if (has_access && "AM Peak (straight-line)" %in% acc$walkshed) {
 ## Reproduce this
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/rtd-frequent-network
+git clone https://github.com/austinthomas7/rtd-frequent-network
 ```
 
 Then run `R/00_setup.R` once, `run_all.R`, and `quarto render`. All code is on [GitHub](https://github.com/YOUR-USERNAME/rtd-frequent-network).
