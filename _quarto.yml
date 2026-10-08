@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs          # GitHub Pages serves this folder
+
+website:
+  title: "Austin Foster · Transit Data"
+  navbar:
+    left:
+      - href: index.qmd
+        text: RTD Frequent Network
+      - href: additional-data.qmd
+        text: Additional Data
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME/rtd-frequent-network
+      - icon: linkedin
+        href: https://www.linkedin.com/in/austin-foster-4a6506159/
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true          # code hidden behind a "Code" toggle; readers can open it
+    code-tools: true
+    fig-width: 8
+    fig-height: 4.5
+
+execute:
+  echo: true
+  warning: false
+  message: false

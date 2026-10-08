@@ -1,0 +1,169 @@
+# =====================================================================
+# 05_walksheds.R  -  network walksheds around frequent stops, by period
+# Question: for each time-of-day period, which areas are within a quarter
+#           mile WALK (along streets and paths) of a frequent stop?
+# Method:   1. snap every stop to the nearest node of the OSM walk network
+#           2. per period, run one shortest-path search from ALL of that
+#              period's frequent stops at once (a "super source" node tied
+#              to each stop), giving every node its walk distance to the
+#              nearest frequent stop
+#           3. keep each street segment, or the part of it, that is within
+#              a quarter mile, widen those streets into an area, and fill
+#              small holes (the insides of city blocks)
+#           4. also build "Every period" (the overlap of all four) and a
+#              straight-line AM Peak buffer, for comparison with the old
+#              method
+# =====================================================================
+source("R/config.R")
+suppressPackageStartupMessages({
+  library(dplyr); library(sf); library(igraph)
+})
+
+net   <- readRDS(NETWORK_PATH)
+nodes <- net$nodes
+edges <- net$edges
+n_nodes <- nrow(nodes)
+
+stops <- readr::read_csv(file.path(OUT_DIR, "stop_frequency.csv"), show_col_types = FALSE)
+
+# ---- 1. Snap each stop to its nearest network node ----------------------
+stop_pts <- stops |>
+  distinct(stop_id, stop_lon, stop_lat) |>
+  st_as_sf(coords = c("stop_lon", "stop_lat"), crs = 4326) |>
+  st_transform(PROJECTED_CRS)
+
+node_pts <- st_as_sf(nodes, coords = c("x", "y"), crs = PROJECTED_CRS)
+nearest  <- st_nearest_feature(stop_pts, node_pts)
+
+stop_snap <- stop_pts |>
+  mutate(
+    node   = nearest,
+    snap_m = as.numeric(st_distance(stop_pts, node_pts[nearest, ], by_element = TRUE))
+  ) |>
+  st_drop_geometry()
+rm(node_pts, nearest); invisible(gc())        # 2+ million points; no longer needed
+
+n_far <- sum(stop_snap$snap_m > STOP_SNAP_MAX_M)
+if (n_far > 0) message(n_far, " stops are more than ", STOP_SNAP_MAX_M,
+                       " m from a walkable street and are skipped")
+
+# ---- 2. Base graph: undirected, weighted by segment length ---------------
+# One extra node (n_nodes + 1) is the "super source"; it gets connected to
+# each period's frequent stops below.
+g <- make_empty_graph(n = n_nodes + 1, directed = FALSE) |>
+  add_edges(rbind(edges$from, edges$to), attr = list(weight = edges$len_m))
+source_node <- n_nodes + 1
+
+# Walk distance from every node to the nearest stop in `stop_ids`
+walk_distance <- function(stop_ids) {
+  s <- stop_snap |> filter(stop_id %in% stop_ids, snap_m <= STOP_SNAP_MAX_M)
+  g_p <- add_edges(g, rbind(source_node, s$node), attr = list(weight = s$snap_m))
+  d <- distances(g_p, v = source_node, mode = "all", weights = E(g_p)$weight,
+                 algorithm = "dijkstra")
+  as.numeric(d[1, seq_len(n_nodes)])           # Inf where unreachable
+}
+
+# ---- 3. Reachable streets -> walkshed polygon ---------------------------
+ring_area <- function(r) {                    # shoelace formula, square metres
+  n <- nrow(r)
+  abs(sum(r[-n, 1] * r[-1, 2] - r[-1, 1] * r[-n, 2])) / 2
+}
+
+fill_small_holes <- function(geom, max_hole_m2) {
+  polys <- st_cast(geom, "POLYGON")
+  filled <- lapply(polys, function(p) {
+    rings <- unclass(p)                        # ring 1 = outline, the rest = holes
+    keep  <- c(TRUE, vapply(rings[-1], ring_area, numeric(1)) > max_hole_m2)
+    st_polygon(rings[keep])
+  })
+  st_union(st_sfc(filled, crs = st_crs(geom)))
+}
+
+walkshed_from_distance <- function(d) {
+  da <- d[edges$from]; db <- d[edges$to]
+  reach_a <- pmax(0, WALK_DIST_M - da)     # metres you can still walk past end a
+  reach_b <- pmax(0, WALK_DIST_M - db)
+  reach_a[!is.finite(reach_a)] <- 0
+  reach_b[!is.finite(reach_b)] <- 0
+
+  ax <- nodes$x[edges$from]; ay <- nodes$y[edges$from]
+  bx <- nodes$x[edges$to];   by <- nodes$y[edges$to]
+  len <- edges$len_m
+
+  # whole segment reachable (from one end, the other, or both)
+  full <- (reach_a + reach_b) >= len
+  # otherwise, the stub reachable from each end
+  part_a <- !full & reach_a > 0
+  part_b <- !full & reach_b > 0
+  fa <- reach_a[part_a] / len[part_a]
+  fb <- reach_b[part_b] / len[part_b]
+
+  seg <- rbind(
+    cbind(ax[full], ay[full], bx[full], by[full]),
+    cbind(ax[part_a], ay[part_a],
+          ax[part_a] + (bx[part_a] - ax[part_a]) * fa,
+          ay[part_a] + (by[part_a] - ay[part_a]) * fa),
+    cbind(bx[part_b], by[part_b],
+          bx[part_b] + (ax[part_b] - bx[part_b]) * fb,
+          by[part_b] + (ay[part_b] - by[part_b]) * fb)
+  )
+  if (nrow(seg) == 0) return(st_sfc(st_polygon(), crs = PROJECTED_CRS))
+
+  lines <- st_multilinestring(lapply(seq_len(nrow(seg)), function(i)
+    matrix(seg[i, ], ncol = 2, byrow = TRUE)))
+  # Buffer each merged line on its own, then union the pieces. Buffering one
+  # giant MULTILINESTRING makes GEOS overlay every part against every other
+  # (slow, and enough memory to swap); a cascaded union of separate buffers
+  # gives the same area in about a minute.
+  st_sfc(lines, crs = PROJECTED_CRS) |>
+    st_line_merge() |>                          # fewer, longer lines = faster buffer
+    st_cast("LINESTRING") |>                    # one feature per line
+    st_buffer(WALKSHED_SIDE_M, nQuadSegs = 3) |>
+    st_union() |>
+    fill_small_holes(WALKSHED_HOLE_M2) |>
+    st_make_valid()
+}
+
+walksheds <- lapply(PERIODS, function(p) {
+  ids <- stops$stop_id[stops$period == p & stops$is_frequent]
+  message(sprintf("%-11s %5d frequent stops ... ", p, length(unique(ids))), appendLF = FALSE)
+  t0 <- Sys.time()
+  shed <- if (length(ids) == 0) st_sfc(st_polygon(), crs = PROJECTED_CRS)
+          else walkshed_from_distance(walk_distance(ids))
+  message(round(as.numeric(difftime(Sys.time(), t0, units = "secs"))), " s")
+  st_sf(walkshed = p, geometry = shed)
+})
+walksheds <- do.call(rbind, walksheds)
+
+# ---- 4. Comparison shapes -------------------------------------------------
+# Every period: somewhere you could rely on frequent service at any hour
+# (start from the smallest shape so each intersection stays small)
+by_size <- order(as.numeric(st_area(walksheds)))
+every_period <- Reduce(st_intersection, lapply(by_size,
+                                               function(i) st_geometry(walksheds)[i]))
+if (length(every_period) == 0) every_period <- st_sfc(st_polygon(), crs = PROJECTED_CRS)
+
+# The old method: a straight-line quarter mile around AM Peak frequent stops
+am_straight <- stops |>
+  filter(period == "AM Peak", is_frequent) |>
+  st_as_sf(coords = c("stop_lon", "stop_lat"), crs = 4326) |>
+  st_transform(PROJECTED_CRS) |>
+  st_buffer(WALK_DIST_M) |>
+  st_union()
+
+walksheds <- rbind(
+  walksheds,
+  st_sf(walkshed = "Every period",               geometry = st_union(every_period)),
+  st_sf(walkshed = "AM Peak (straight-line)",    geometry = am_straight)
+) |>
+  st_make_valid() |>
+  mutate(area_km2 = round(as.numeric(st_area(geometry)) / 1e6, 1))
+
+print(st_drop_geometry(walksheds))
+
+# Light simplification (5 m) keeps the web map small without changing results
+walksheds |>
+  st_simplify(dTolerance = 5, preserveTopology = TRUE) |>
+  st_transform(4326) |>
+  st_write(file.path(OUT_DIR, "frequent_walksheds.geojson"), delete_dsn = TRUE, quiet = TRUE)
+message("Saved output/frequent_walksheds.geojson")

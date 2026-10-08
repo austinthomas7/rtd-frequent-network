@@ -1,0 +1,472 @@
+route_id,route_short_name,route_long_name,mode,period_order,period,trips_both_dirs,min_headway_min,max_headway_min,median_headway_min,p85_headway_min,is_frequent
+FREE,FreeRide,16th Street FreeRide,Bus,1,AM Peak,105,2.9,9,3,3.2,TRUE
+208,208,Iris / Valmont,Bus,1,AM Peak,3,7,7,7,7,FALSE
+43,43,Martin Luther King Blvd,Bus,1,AM Peak,43,6,23,7.5,8,TRUE
+31,31,Federal Blvd ,Bus,1,AM Peak,36,9,10.2,10,10,TRUE
+SKIP,SKIP,Broadway,Bus,1,AM Peak,46,4,15,10,10,TRUE
+FMR,MetroRide,Free MetroRide,Bus,1,AM Peak,34,9.3,11,10,10,TRUE
+15L,15L,East Colfax Limited,Bus,1,AM Peak,39,7,15,10,12.3,TRUE
+15,15,East Colfax Avenue,Bus,1,AM Peak,31,9.4,15,10,15,TRUE
+0L,0L,South Broadway Limited,Bus,1,AM Peak,24,14.8,15,15,15,TRUE
+BOND,Bound,30th Street,Bus,1,AM Peak,20,14,30,15,27.4,TRUE
+101E,E,Union Station to RidgeGate Parkway Station,Light rail,1,AM Peak,26,2.8,15,15,15,TRUE
+30,30,South Federal Blvd,Bus,1,AM Peak,22,15,30,15,15.8,TRUE
+17,17,Golden/Colfax,Bus,1,AM Peak,24,15,17,15,15,TRUE
+0,0,Broadway,Bus,1,AM Peak,23,10,15,15,15,TRUE
+120X,120X,Wagon Road / Thornton Express,Bus,1,AM Peak,20,14,30,15,29.3,TRUE
+JUMP,JUMP,Boulder / Lafayette/ Erie,Bus,1,AM Peak,24,11,18,15,17,TRUE
+12,12,South Downing,Bus,1,AM Peak,24,15,15.3,15,15,TRUE
+105,105,Havana Street,Bus,1,AM Peak,24,15,17.9,15,17,TRUE
+121,121,Peoria Street,Bus,1,AM Peak,24,14.2,16,15,15.3,TRUE
+21,21,East Evans Avenue,Bus,1,AM Peak,22,13.3,30,15,15,TRUE
+FF1,FF1,Flatiron Flyer,Bus,1,AM Peak,21,15,30,15,18.8,TRUE
+153,153,Chambers Road,Bus,1,AM Peak,22,14,30,15,15.5,TRUE
+113G,G,Union Station to Wheat Ridge Ward Station,Commuter rail,1,AM Peak,23,15,15,15,15,TRUE
+103W,W,Union Station to Jefferson County Government Center-Golden Station,Light rail,1,AM Peak,23,15,15,15,15,TRUE
+101C,C,Union Station to Mineral Station,Light rail,1,AM Peak,24,14,15.3,15,15,TRUE
+101T,T,Lincoln Station to Alameda Station,Light rail,1,AM Peak,22,15,15,15,15,TRUE
+40,40,Colorado Boulevard,Bus,1,AM Peak,25,14,17,15,15,TRUE
+73,73,Quebec Street,Bus,1,AM Peak,24,1,16.8,15,15,TRUE
+16,16,West Colfax Avenue,Bus,1,AM Peak,23,10,15,15,15,TRUE
+107R,R,RidgeGate Parkway Station to Peoria Station,Light rail,1,AM Peak,22,15,25,15,15,TRUE
+204,204,Table Mesa / Moorhead / North 19th,Bus,1,AM Peak,16,9,30,16,30,FALSE
+42,42,Montbello via Albrook/GVR,Bus,1,AM Peak,22,11,30,16,27.4,FALSE
+DASH,DASH,Boulder / Lafayette via Louisville,Bus,1,AM Peak,23,13,19,16.5,17,FALSE
+10,10,East 12th Avenue,Bus,1,AM Peak,16,20,21,20,20.1,FALSE
+FF2,FF2,Flatiron Flyer,Bus,1,AM Peak,9,7,29,25,27.8,FALSE
+83D,83D,Cherry Creek / Parker Rd Limited,Bus,1,AM Peak,12,28.1,30.2,30,30.1,FALSE
+37,37,Smith Road Industrial,Bus,1,AM Peak,11,29,31,30,30.4,FALSE
+4,4,Morrison Road,Bus,1,AM Peak,12,29.1,30.9,30,30.2,FALSE
+99,99,South Kipling Street,Bus,1,AM Peak,12,30,30,30,30,FALSE
+19,19,North Pecos ,Bus,1,AM Peak,12,29,33,30,31.2,FALSE
+0B,0B,South Broadway,Bus,1,AM Peak,12,30,30,30,30,FALSE
+45,45,Montbello via 51st/GVR,Bus,1,AM Peak,12,26,33,30,31.2,FALSE
+52,52,W 52nd Avenue / South Bannock,Bus,1,AM Peak,11,29,30.3,30,30.2,FALSE
+A,A,Union Station to Denver Airport Station,Commuter rail,1,AM Peak,12,30,30,30,30,FALSE
+14,14,West Florida Avenue,Bus,1,AM Peak,11,30,60,30,46.5,FALSE
+48,48,East 48th Avenue / Commerce City,Bus,1,AM Peak,12,29,33.9,30,32.2,FALSE
+65,65,Monaco Parkway,Bus,1,AM Peak,14,5,35,30,32.1,FALSE
+6,6,East 6th Avenue ,Bus,1,AM Peak,12,30,31.5,30,31.2,FALSE
+22,22,West Evans Avenue,Bus,1,AM Peak,12,26,60,30,42,FALSE
+133,133,Hampden/Tower,Bus,1,AM Peak,12,30,31.7,30,30.7,FALSE
+20,20,20th Avenue,Bus,1,AM Peak,14,13.2,34.6,30,32.2,FALSE
+117N,N,Union Station to Eastlake & 124th Station,Commuter rail,1,AM Peak,12,30,30,30,30,FALSE
+324,324,Main Street Crosstown,Bus,1,AM Peak,12,30,30,30,30,FALSE
+7,7,North Washington,Bus,1,AM Peak,11,20,35,30,32,FALSE
+326,326,Westside Crosstown,Bus,1,AM Peak,11,30,30,30,30,FALSE
+76,76,Wadsworth Blvd,Bus,1,AM Peak,12,29.8,30.9,30,30.4,FALSE
+130,130,Yale / Buckley,Bus,1,AM Peak,12,30,30,30,30,FALSE
+83L,83L,Cherry Creek / Parker Rd Limited,Bus,1,AM Peak,12,28.1,30.3,30,30.1,FALSE
+113B,B,Union Station to Westminster Station,Commuter rail,1,AM Peak,11,30,30,30,30,FALSE
+100,100,Kipling Street,Bus,1,AM Peak,12,29.8,30,30,30,FALSE
+35,35,Hampden Avenue,Bus,1,AM Peak,11,6.2,34,30,32.2,FALSE
+ART,ART,Art District Connector,Bus,1,AM Peak,12,29,31.5,30,31.2,FALSE
+135,135,Smoky Hill Road,Bus,1,AM Peak,12,20,41,30,40.4,FALSE
+46,46,South Dahlia,Bus,1,AM Peak,11,30,30,30,30,FALSE
+205,205,28th St / Gunbarrel ,Bus,1,AM Peak,12,25,35,30,32,FALSE
+51,51,Sheridan Blvd,Bus,1,AM Peak,13,7,31.9,30,30.8,FALSE
+BOLT,BOLT,Boulder / Longmont,Bus,1,AM Peak,10,30,31,30,30.6,FALSE
+49,49,Denver/ Commerce City,Bus,1,AM Peak,12,30,32,30,30.8,FALSE
+11,11,Mississippi Avenue,Bus,1,AM Peak,13,6.1,33.1,30.1,31.3,FALSE
+38,38,West 38th Avenue,Bus,1,AM Peak,11,26,34,30.5,32.7,FALSE
+225T,225T,Boulder / Lafayette via Baseline,Bus,1,AM Peak,4,31.2,32,32,32,FALSE
+120,120,120th Avenue Crosstown,Bus,1,AM Peak,12,25.9,35,32.1,34.4,FALSE
+206,206,Conestoga/ Arapahoe / Fairview H.S.,Bus,1,AM Peak,10,27,60,33,49.2,FALSE
+3,3,Alameda Avenue,Bus,1,AM Peak,12,20.5,39,33.8,39,FALSE
+287,287,Longmont / Broomfield,Bus,1,AM Peak,12,13,47,37,41,FALSE
+FF4,FF4,Flatiron Flyer,Bus,1,AM Peak,7,30,45,40.5,43.7,FALSE
+225,225,Boulder / Lafayette via Baseline,Bus,1,AM Peak,9,30,47.4,43.8,46.3,FALSE
+RX,RX,Brighton / Denver Express,Bus,1,AM Peak,5,17,64,45,58.3,FALSE
+LD1,LD1,Longmont / Denver,Bus,1,AM Peak,4,57,57.1,57.1,57.1,FALSE
+66,66,Arapahoe Road,Bus,1,AM Peak,6,35.6,60,59,59.7,FALSE
+PD,PD,Parker / Denver,Bus,1,AM Peak,3,59.9,60,59.9,60,FALSE
+53,53,North Sheridan,Bus,1,AM Peak,6,60,60,60,60,FALSE
+104L,104L,Wagon Road / Denver Airport Limited,Bus,1,AM Peak,6,57,60,60,60,FALSE
+520,520,Brighton,Bus,1,AM Peak,5,60,60,60,60,FALSE
+AB2,AB2,Boulder / Denver Airport,Bus,1,AM Peak,5,59,60,60,60,FALSE
+44,44,44th Avenue,Bus,1,AM Peak,8,25,60,60,60,FALSE
+AB1,AB1,Boulder / Denver Airport,Bus,1,AM Peak,5,60,60,60,60,FALSE
+112,112,West 112th Avenue,Bus,1,AM Peak,3,60,60,60,60,FALSE
+28,28,28th Avenue,Bus,1,AM Peak,8,28,60,60,60,FALSE
+9,9,West 10th Avenue,Bus,1,AM Peak,5,60,60,60,60,FALSE
+AT,AT,Arapahoe County / Denver Airport,Bus,1,AM Peak,7,5,64,60,62.8,FALSE
+483,483,Parker Road - Lincoln Ave,Bus,1,AM Peak,5,58,60,60,60,FALSE
+327,327,Eastside Crosstown,Bus,1,AM Peak,3,60,60,60,60,FALSE
+3L,3L,East Alameda Limited,Bus,1,AM Peak,3,60,60,60,60,FALSE
+72,72,72nd Avenue,Bus,1,AM Peak,5,60,60,60,60,FALSE
+93L,93L,N Colorado Blvd Limited,Bus,1,AM Peak,4,59.7,60,60,60,FALSE
+32,32,West 32nd Avenue,Bus,1,AM Peak,6,59.6,60,60,60,FALSE
+AL,AL,Longmont / Denver Airport,Bus,1,AM Peak,6,60,60,60,60,FALSE
+80,80,80th Avenue,Bus,1,AM Peak,6,60,60,60,60,FALSE
+228F,228F,Lafayette / Louisville / Broomfield,Bus,1,AM Peak,3,60,60,60,60,FALSE
+402L,402L,Highlands Ranch Parkway,Bus,1,AM Peak,6,59.9,60,60,60,FALSE
+88L,88L,Thornton/Commerce City Limited,Bus,1,AM Peak,6,60,60.2,60.1,60.2,FALSE
+8,8,North Broadway / Huron,Bus,1,AM Peak,6,31.5,60.3,60.3,60.3,FALSE
+1,1,West 1st Avenue,Bus,1,AM Peak,6,60,60.7,60.4,60.6,FALSE
+120L,120L,Thornton / Brighton,Bus,1,AM Peak,6,59.6,60.8,60.4,60.7,FALSE
+225D,225D,Boulder / Lafayette via Baseline,Bus,1,AM Peak,6,31.7,91,60.4,77.2,FALSE
+169,169,Buckley Road,Bus,1,AM Peak,6,60,61,60.5,60.9,FALSE
+36,36,Fort Logan,Bus,1,AM Peak,6,60,61,60.5,60.9,FALSE
+92,92,92nd Avenue,Bus,1,AM Peak,7,29,61,60.5,60.9,FALSE
+116X,116X,South Simms Express,Bus,1,AM Peak,3,60,61.9,61,61.6,FALSE
+88,88,Central Park/ 72nd Ave Station,Bus,1,AM Peak,6,60,62,61,61.7,FALSE
+23,23,West 20th Ave,Bus,1,AM Peak,6,59,63,61.5,62.5,FALSE
+139,139,Quincy Avenue,Bus,1,AM Peak,6,61,62,62,62,FALSE
+24,24,University Blvd,Bus,1,AM Peak,7,23.6,63,62,62.7,FALSE
+EV,EV,Evergreen / Denver,Bus,1,AM Peak,3,59.1,67.6,63.3,66.3,FALSE
+NB1,NB1,Boulder/ Nederland/ Eldora,Bus,1,AM Peak,5,50.9,76,68,73.6,FALSE
+59,59,West Bowles,Bus,1,AM Peak,4,60,68,68,68,FALSE
+CV,CV,Pine Junction / Conifer / Denver,Bus,1,AM Peak,2,70.5,70.5,70.5,70.5,FALSE
+FF5,FF5,Flatiron Flyer,Bus,1,AM Peak,2,79,79,79,79,FALSE
+GS,GS,Golden / Boulder,Bus,1,AM Peak,3,89,89,89,89,FALSE
+LX2,LX2,Longmont I-25 Express,Bus,1,AM Peak,3,93,93,93,93,FALSE
+323,323,Skyline Crosstown,Bus,1,AM Peak,2,NA,NA,NA,NA,FALSE
+169L,169L,Buckley / Tower DIA Limited,Bus,1,AM Peak,1,NA,NA,NA,NA,FALSE
+FREE,FreeRide,16th Street FreeRide,Bus,2,Mid-Day,240,2.9,3.2,3,3,TRUE
+15,15,East Colfax Avenue,Bus,2,Mid-Day,72,8.4,10.6,10,10,TRUE
+15L,15L,East Colfax Limited,Bus,2,Mid-Day,75,6,11,10,11,TRUE
+31,31,Federal Blvd ,Bus,2,Mid-Day,72,9,11,10,10,TRUE
+SKIP,SKIP,Broadway,Bus,2,Mid-Day,76,5,11,10,10,TRUE
+16,16,West Colfax Avenue,Bus,2,Mid-Day,71,8.6,16,10,10,TRUE
+0L,0L,South Broadway Limited,Bus,2,Mid-Day,48,15,15,15,15,TRUE
+JUMP,JUMP,Boulder / Lafayette/ Erie,Bus,2,Mid-Day,48,12,18.8,15,16.7,TRUE
+113G,G,Union Station to Wheat Ridge Ward Station,Commuter rail,2,Mid-Day,48,15,15,15,15,TRUE
+43,43,Martin Luther King Blvd,Bus,2,Mid-Day,53,7,15,15,15,TRUE
+FF1,FF1,Flatiron Flyer,Bus,2,Mid-Day,48,11,17,15,15,TRUE
+0,0,Broadway,Bus,2,Mid-Day,48,10,19,15,15,TRUE
+101T,T,Lincoln Station to Alameda Station,Light rail,2,Mid-Day,48,15,15,15,15,TRUE
+BOND,Bound,30th Street,Bus,2,Mid-Day,48,14,18,15,15,TRUE
+21,21,East Evans Avenue,Bus,2,Mid-Day,48,13.2,16.9,15,15,TRUE
+73,73,Quebec Street,Bus,2,Mid-Day,49,13.3,15.8,15,15,TRUE
+105,105,Havana Street,Bus,2,Mid-Day,49,11.1,18.9,15,15,TRUE
+101E,E,Union Station to RidgeGate Parkway Station,Light rail,2,Mid-Day,48,15,15,15,15,TRUE
+103W,W,Union Station to Jefferson County Government Center-Golden Station,Light rail,2,Mid-Day,48,14,16,15,15,TRUE
+17,17,Golden/Colfax,Bus,2,Mid-Day,48,15,16.2,15,15,TRUE
+40,40,Colorado Boulevard,Bus,2,Mid-Day,47,13.2,15.7,15,15,TRUE
+101C,C,Union Station to Mineral Station,Light rail,2,Mid-Day,48,15,15,15,15,TRUE
+153,153,Chambers Road,Bus,2,Mid-Day,47,15,16,15,15,TRUE
+107R,R,RidgeGate Parkway Station to Peoria Station,Light rail,2,Mid-Day,48,14.8,15.3,15,15,TRUE
+30,30,South Federal Blvd,Bus,2,Mid-Day,48,14.2,16,15,15,TRUE
+121,121,Peoria Street,Bus,2,Mid-Day,48,14,17,15.6,16,FALSE
+10,10,East 12th Avenue,Bus,2,Mid-Day,36,20,20.4,20,20,FALSE
+8,8,North Broadway / Huron,Bus,2,Mid-Day,24,1.2,63,29.8,57,FALSE
+0B,0B,South Broadway,Bus,2,Mid-Day,24,28,31.9,30,30,FALSE
+6,6,East 6th Avenue ,Bus,2,Mid-Day,24,27,33,30,30,FALSE
+14,14,West Florida Avenue,Bus,2,Mid-Day,24,29.3,30.2,30,30,FALSE
+35,35,Hampden Avenue,Bus,2,Mid-Day,24,29.2,32,30,30,FALSE
+204,204,Table Mesa / Moorhead / North 19th,Bus,2,Mid-Day,29,15,30,30,30,FALSE
+3,3,Alameda Avenue,Bus,2,Mid-Day,24,19.6,40.5,30,40.5,FALSE
+20,20,20th Avenue,Bus,2,Mid-Day,24,28.8,32.6,30,30,FALSE
+22,22,West Evans Avenue,Bus,2,Mid-Day,24,28.7,32.1,30,30,FALSE
+326,326,Westside Crosstown,Bus,2,Mid-Day,24,30,30,30,30,FALSE
+133,133,Hampden/Tower,Bus,2,Mid-Day,24,27.2,31.7,30,30,FALSE
+45,45,Montbello via 51st/GVR,Bus,2,Mid-Day,24,30,32,30,30.5,FALSE
+19,19,North Pecos ,Bus,2,Mid-Day,23,25,35,30,34,FALSE
+205,205,28th St / Gunbarrel ,Bus,2,Mid-Day,24,30,33.4,30,30,FALSE
+46,46,South Dahlia,Bus,2,Mid-Day,24,30,30,30,30,FALSE
+76,76,Wadsworth Blvd,Bus,2,Mid-Day,24,29.8,30,30,30,FALSE
+51,51,Sheridan Blvd,Bus,2,Mid-Day,24,29,31,30,30,FALSE
+99,99,South Kipling Street,Bus,2,Mid-Day,24,30,30,30,30,FALSE
+65,65,Monaco Parkway,Bus,2,Mid-Day,25,25,30,30,30,FALSE
+83L,83L,Cherry Creek / Parker Rd Limited,Bus,2,Mid-Day,24,30,30.1,30,30.1,FALSE
+ART,ART,Art District Connector,Bus,2,Mid-Day,24,27,33,30,30.5,FALSE
+12,12,South Downing,Bus,2,Mid-Day,31,5,30.3,30,30,FALSE
+DASH,DASH,Boulder / Lafayette via Louisville,Bus,2,Mid-Day,25,17,35,30,32.1,FALSE
+324,324,Main Street Crosstown,Bus,2,Mid-Day,23,29,32,30,30,FALSE
+49,49,Denver/ Commerce City,Bus,2,Mid-Day,24,30,30,30,30,FALSE
+A,A,Union Station to Denver Airport Station,Commuter rail,2,Mid-Day,24,30,30,30,30,FALSE
+52,52,W 52nd Avenue / South Bannock,Bus,2,Mid-Day,24,27,30,30,30,FALSE
+92,92,92nd Avenue,Bus,2,Mid-Day,24,28,32,30,31,FALSE
+42,42,Montbello via Albrook/GVR,Bus,2,Mid-Day,26,4,33,30,31.5,FALSE
+38,38,West 38th Avenue,Bus,2,Mid-Day,25,27,33,30,31,FALSE
+83D,83D,Cherry Creek / Parker Rd Limited,Bus,2,Mid-Day,24,29.9,30.2,30,30.1,FALSE
+117N,N,Union Station to Eastlake & 124th Station,Commuter rail,2,Mid-Day,24,30,30,30,30,FALSE
+7,7,North Washington,Bus,2,Mid-Day,24,29,31,30,30,FALSE
+130,130,Yale / Buckley,Bus,2,Mid-Day,24,30,32,30,30,FALSE
+48,48,East 48th Avenue / Commerce City,Bus,2,Mid-Day,24,28,31,30,30.5,FALSE
+11,11,Mississippi Avenue,Bus,2,Mid-Day,24,27,33,30,33,FALSE
+100,100,Kipling Street,Bus,2,Mid-Day,24,29,31,30,30,FALSE
+120X,120X,Wagon Road / Thornton Express,Bus,2,Mid-Day,24,27,45,30,30.5,FALSE
+88,88,Central Park/ 72nd Ave Station,Bus,2,Mid-Day,21,30,60,30,30.7,FALSE
+AB1,AB1,Boulder / Denver Airport,Bus,2,Mid-Day,16,30,60,45,60,FALSE
+225,225,Boulder / Lafayette via Baseline,Bus,2,Mid-Day,16,29.2,60,53,60,FALSE
+112,112,West 112th Avenue,Bus,2,Mid-Day,12,60,60,60,60,FALSE
+135,135,Smoky Hill Road,Bus,2,Mid-Day,14,20,61,60,60.3,FALSE
+37,37,Smith Road Industrial,Bus,2,Mid-Day,15,30,62,60,60.2,FALSE
+120L,120L,Thornton / Brighton,Bus,2,Mid-Day,12,60,60.4,60,60.1,FALSE
+59,59,West Bowles,Bus,2,Mid-Day,12,59,61,60,60.4,FALSE
+169,169,Buckley Road,Bus,2,Mid-Day,12,60,61,60,60.4,FALSE
+AT,AT,Arapahoe County / Denver Airport,Bus,2,Mid-Day,15,7,60,60,60,FALSE
+139,139,Quincy Avenue,Bus,2,Mid-Day,12,59,61,60,60.4,FALSE
+402L,402L,Highlands Ranch Parkway,Bus,2,Mid-Day,12,60,60.4,60,60.2,FALSE
+483,483,Parker Road - Lincoln Ave,Bus,2,Mid-Day,12,56,60,60,60,FALSE
+113B,B,Union Station to Westminster Station,Commuter rail,2,Mid-Day,12,60,60,60,60,FALSE
+24,24,University Blvd,Bus,2,Mid-Day,12,58.5,61,60,60.4,FALSE
+287,287,Longmont / Broomfield,Bus,2,Mid-Day,15,13,60,60,60,FALSE
+1,1,West 1st Avenue,Bus,2,Mid-Day,12,60,60.7,60,60.3,FALSE
+228A,228A,Lafayette / Louisville / Broomfield,Bus,2,Mid-Day,9,56,60,60,60,FALSE
+104L,104L,Wagon Road / Denver Airport Limited,Bus,2,Mid-Day,12,30,90,60,72.6,FALSE
+BOLT,BOLT,Boulder / Longmont,Bus,2,Mid-Day,16,29,61,60,61,FALSE
+225D,225D,Boulder / Lafayette via Baseline,Bus,2,Mid-Day,15,29.2,60,60,60,FALSE
+327,327,Eastside Crosstown,Bus,2,Mid-Day,12,59.7,60,60,60,FALSE
+208,208,Iris / Valmont,Bus,2,Mid-Day,12,60,60,60,60,FALSE
+206,206,Conestoga/ Arapahoe / Fairview H.S.,Bus,2,Mid-Day,14,25.9,62,60,60.5,FALSE
+72,72,72nd Avenue,Bus,2,Mid-Day,12,60,60,60,60,FALSE
+36,36,Fort Logan,Bus,2,Mid-Day,12,60,60,60,60,FALSE
+AL,AL,Longmont / Denver Airport,Bus,2,Mid-Day,12,52,68,60,63.2,FALSE
+323,323,Skyline Crosstown,Bus,2,Mid-Day,12,58,61,60,60.8,FALSE
+93L,93L,N Colorado Blvd Limited,Bus,2,Mid-Day,12,60,60,60,60,FALSE
+88L,88L,Thornton/Commerce City Limited,Bus,2,Mid-Day,12,60,61.2,60,60.5,FALSE
+44,44,44th Avenue,Bus,2,Mid-Day,12,60,61,60,60.4,FALSE
+520,520,Brighton,Bus,2,Mid-Day,12,60,62,60,60.8,FALSE
+66,66,Arapahoe Road,Bus,2,Mid-Day,12,51,62.2,60,61,FALSE
+53,53,North Sheridan,Bus,2,Mid-Day,12,60,62,60,60.8,FALSE
+28,28,28th Avenue,Bus,2,Mid-Day,12,59.4,62,60,60.8,FALSE
+4,4,Morrison Road,Bus,2,Mid-Day,14,26,60.9,60,60.2,FALSE
+80,80,80th Avenue,Bus,2,Mid-Day,12,60,63,60,61.2,FALSE
+32,32,West 32nd Avenue,Bus,2,Mid-Day,12,59.6,61,60,60.4,FALSE
+120,120,120th Avenue Crosstown,Bus,2,Mid-Day,13,30,61,60,60.4,FALSE
+AB2,AB2,Boulder / Denver Airport,Bus,2,Mid-Day,3,61,61,61,61,FALSE
+228F,228F,Lafayette / Louisville / Broomfield,Bus,2,Mid-Day,3,62,62,62,62,FALSE
+9,9,West 10th Avenue,Bus,2,Mid-Day,12,59,65,63,65,FALSE
+NB1,NB1,Boulder/ Nederland/ Eldora,Bus,2,Mid-Day,10,44.9,90,73.5,87.8,FALSE
+FF4,FF4,Flatiron Flyer,Bus,2,Mid-Day,2,NA,NA,NA,NA,FALSE
+FF5,FF5,Flatiron Flyer,Bus,2,Mid-Day,2,NA,NA,NA,NA,FALSE
+GS,GS,Golden / Boulder,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+FF2,FF2,Flatiron Flyer,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+145X,145X,Brighton / Denver Airport ,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+FMR,MetroRide,Free MetroRide,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+23,23,West 20th Ave,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+LD1,LD1,Longmont / Denver,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+RX,RX,Brighton / Denver Express,Bus,2,Mid-Day,1,NA,NA,NA,NA,FALSE
+169L,169L,Buckley / Tower DIA Limited,Bus,2,Mid-Day,2,NA,NA,NA,NA,FALSE
+FREE,FreeRide,16th Street FreeRide,Bus,3,PM Peak,158,2.9,4.7,3,3.2,TRUE
+43,43,Martin Luther King Blvd,Bus,3,PM Peak,53,7,31.9,8,8,TRUE
+16,16,West Colfax Avenue,Bus,3,PM Peak,43,8.1,30,10,15,TRUE
+31,31,Federal Blvd ,Bus,3,PM Peak,44,10,15,10,15,TRUE
+15,15,East Colfax Avenue,Bus,3,PM Peak,46,6.8,16,10,15,TRUE
+15L,15L,East Colfax Limited,Bus,3,PM Peak,53,6,17,10,15,TRUE
+FMR,MetroRide,Free MetroRide,Bus,3,PM Peak,37,9.3,11.5,10,10,TRUE
+SKIP,SKIP,Broadway,Bus,3,PM Peak,48,5,16,10,14.2,TRUE
+0L,0L,South Broadway Limited,Bus,3,PM Peak,27,15,15,15,15,TRUE
+JUMP,JUMP,Boulder / Lafayette/ Erie,Bus,3,PM Peak,32,10,20,15,17.8,TRUE
+17,17,Golden/Colfax,Bus,3,PM Peak,31,10,30,15,15.8,TRUE
+101E,E,Union Station to RidgeGate Parkway Station,Light rail,3,PM Peak,30,15,30,15,15,TRUE
+73,73,Quebec Street,Bus,3,PM Peak,31,4,17.5,15,15,TRUE
+30,30,South Federal Blvd,Bus,3,PM Peak,30,14,29.2,15,15.2,TRUE
+21,21,East Evans Avenue,Bus,3,PM Peak,31,13.2,28.2,15,15,TRUE
+107R,R,RidgeGate Parkway Station to Peoria Station,Light rail,3,PM Peak,31,14,15.8,15,15,TRUE
+FF1,FF1,Flatiron Flyer,Bus,3,PM Peak,29,13,29,15,15,TRUE
+153,153,Chambers Road,Bus,3,PM Peak,33,12,16.2,15,15.8,TRUE
+121,121,Peoria Street,Bus,3,PM Peak,31,14,30,15,15.1,TRUE
+BOND,Bound,30th Street,Bus,3,PM Peak,32,12,19,15,15,TRUE
+103W,W,Union Station to Jefferson County Government Center-Golden Station,Light rail,3,PM Peak,32,14,15,15,15,TRUE
+113G,G,Union Station to Wheat Ridge Ward Station,Commuter rail,3,PM Peak,31,15,30,15,15,TRUE
+204,204,Table Mesa / Moorhead / North 19th,Bus,3,PM Peak,27,7,30.4,15,20.4,TRUE
+101T,T,Lincoln Station to Alameda Station,Light rail,3,PM Peak,31,14,30,15,15.7,TRUE
+101C,C,Union Station to Mineral Station,Light rail,3,PM Peak,31,14,16,15,15,TRUE
+105,105,Havana Street,Bus,3,PM Peak,31,8.1,20,15,15.1,TRUE
+40,40,Colorado Boulevard,Bus,3,PM Peak,31,12,30,15,16,TRUE
+0,0,Broadway,Bus,3,PM Peak,32,12,18.9,15,17.7,TRUE
+12,12,South Downing,Bus,3,PM Peak,31,13,17,15.5,16.1,FALSE
+42,42,Montbello via Albrook/GVR,Bus,3,PM Peak,30,4,30,15.7,19.1,FALSE
+120X,120X,Wagon Road / Thornton Express,Bus,3,PM Peak,24,15,30,17,30,FALSE
+DASH,DASH,Boulder / Lafayette via Louisville,Bus,3,PM Peak,28,9,30,17,21,FALSE
+10,10,East 12th Avenue,Bus,3,PM Peak,23,18,41,20,21,FALSE
+22,22,West Evans Avenue,Bus,3,PM Peak,16,28.9,32.3,30,30.2,FALSE
+326,326,Westside Crosstown,Bus,3,PM Peak,15,29,31,30,30.3,FALSE
+130,130,Yale / Buckley,Bus,3,PM Peak,16,28,31,30,30.1,FALSE
+287,287,Longmont / Broomfield,Bus,3,PM Peak,16,20,38,30,38,FALSE
+92,92,92nd Avenue,Bus,3,PM Peak,16,29,31,30,31,FALSE
+52,52,W 52nd Avenue / South Bannock,Bus,3,PM Peak,15,29.7,34,30,31,FALSE
+88,88,Central Park/ 72nd Ave Station,Bus,3,PM Peak,14,28,30,30,30,FALSE
+46,46,South Dahlia,Bus,3,PM Peak,14,30,30,30,30,FALSE
+35,35,Hampden Avenue,Bus,3,PM Peak,16,28.9,30,30,30,FALSE
+38,38,West 38th Avenue,Bus,3,PM Peak,15,22.9,39,30,35.4,FALSE
+BOLT,BOLT,Boulder / Longmont,Bus,3,PM Peak,16,27,33,30,30.3,FALSE
+6,6,East 6th Avenue ,Bus,3,PM Peak,17,15,36.5,30,30.1,FALSE
+14,14,West Florida Avenue,Bus,3,PM Peak,15,29.5,60,30,37.8,FALSE
+49,49,Denver/ Commerce City,Bus,3,PM Peak,16,27.6,31,30,30.1,FALSE
+100,100,Kipling Street,Bus,3,PM Peak,15,28,32,30,30.2,FALSE
+65,65,Monaco Parkway,Bus,3,PM Peak,19,3,31.8,30,30.2,FALSE
+ART,ART,Art District Connector,Bus,3,PM Peak,16,24.1,34,30,32.2,FALSE
+45,45,Montbello via 51st/GVR,Bus,3,PM Peak,18,4,30.9,30,30.1,FALSE
+113B,B,Union Station to Westminster Station,Commuter rail,3,PM Peak,15,30,30,30,30,FALSE
+99,99,South Kipling Street,Bus,3,PM Peak,15,30,30,30,30,FALSE
+206,206,Conestoga/ Arapahoe / Fairview H.S.,Bus,3,PM Peak,16,2,37,30,37,FALSE
+83D,83D,Cherry Creek / Parker Rd Limited,Bus,3,PM Peak,16,29.6,31.3,30,30.1,FALSE
+205,205,28th St / Gunbarrel ,Bus,3,PM Peak,17,5,32,30,31.4,FALSE
+0B,0B,South Broadway,Bus,3,PM Peak,16,27.3,32.9,30,30.3,FALSE
+48,48,East 48th Avenue / Commerce City,Bus,3,PM Peak,16,29,31,30,31,FALSE
+19,19,North Pecos ,Bus,3,PM Peak,18,14,46,30,34.8,FALSE
+37,37,Smith Road Industrial,Bus,3,PM Peak,14,30,32,30,30.5,FALSE
+76,76,Wadsworth Blvd,Bus,3,PM Peak,16,30,30.1,30,30,FALSE
+51,51,Sheridan Blvd,Bus,3,PM Peak,17,12.8,32,30,30.2,FALSE
+4,4,Morrison Road,Bus,3,PM Peak,13,29,31.9,30,30.7,FALSE
+7,7,North Washington,Bus,3,PM Peak,16,27,35,30,30.5,FALSE
+135,135,Smoky Hill Road,Bus,3,PM Peak,16,19,40,30,40,FALSE
+11,11,Mississippi Avenue,Bus,3,PM Peak,16,7.1,32.6,30,31.6,FALSE
+324,324,Main Street Crosstown,Bus,3,PM Peak,16,29,30,30,30,FALSE
+133,133,Hampden/Tower,Bus,3,PM Peak,16,24.6,33.6,30,30.4,FALSE
+83L,83L,Cherry Creek / Parker Rd Limited,Bus,3,PM Peak,16,29.6,31,30,30.3,FALSE
+A,A,Union Station to Denver Airport Station,Commuter rail,3,PM Peak,16,30,30,30,30,FALSE
+117N,N,Union Station to Eastlake & 124th Station,Commuter rail,3,PM Peak,16,30,30,30,30,FALSE
+225,225,Boulder / Lafayette via Baseline,Bus,3,PM Peak,13,8,52,30.1,40,FALSE
+120,120,120th Avenue Crosstown,Bus,3,PM Peak,14,25,35,30.2,33.9,FALSE
+20,20,20th Avenue,Bus,3,PM Peak,17,3.3,60,31,39.2,FALSE
+3,3,Alameda Avenue,Bus,3,PM Peak,16,19.6,40.5,31.6,40.5,FALSE
+225D,225D,Boulder / Lafayette via Baseline,Bus,3,PM Peak,13,15,60,32,46.1,FALSE
+169L,169L,Buckley / Tower DIA Limited,Bus,3,PM Peak,4,30,81.7,34,67.4,FALSE
+FF2,FF2,Flatiron Flyer,Bus,3,PM Peak,7,8,40,38,39.4,FALSE
+104L,104L,Wagon Road / Denver Airport Limited,Bus,3,PM Peak,11,30,60,43.5,55.5,FALSE
+NB1,NB1,Boulder/ Nederland/ Eldora,Bus,3,PM Peak,6,38,60,45,54.3,FALSE
+RX,RX,Brighton / Denver Express,Bus,3,PM Peak,6,30.2,57,48.5,54.3,FALSE
+8,8,North Broadway / Huron,Bus,3,PM Peak,11,1.5,64,49.2,62.2,FALSE
+228F,228F,Lafayette / Louisville / Broomfield,Bus,3,PM Peak,4,57,58,58,58,FALSE
+EV,EV,Evergreen / Denver,Bus,3,PM Peak,3,59.9,59.9,59.9,59.9,FALSE
+93L,93L,N Colorado Blvd Limited,Bus,3,PM Peak,8,60,60.3,60,60.2,FALSE
+AB2,AB2,Boulder / Denver Airport,Bus,3,PM Peak,6,30,91,60,81.7,FALSE
+32,32,West 32nd Avenue,Bus,3,PM Peak,8,57.7,62.4,60,61.7,FALSE
+CV,CV,Pine Junction / Conifer / Denver,Bus,3,PM Peak,3,59.9,60,60,60,FALSE
+120L,120L,Thornton / Brighton,Bus,3,PM Peak,8,60,60.4,60,60.2,FALSE
+AT,AT,Arapahoe County / Denver Airport,Bus,3,PM Peak,9,17,64,60,62.8,FALSE
+28,28,28th Avenue,Bus,3,PM Peak,11,25,62,60,61.4,FALSE
+80,80,80th Avenue,Bus,3,PM Peak,8,59.9,60,60,60,FALSE
+66,66,Arapahoe Road,Bus,3,PM Peak,9,29,64,60,62.8,FALSE
+44,44,44th Avenue,Bus,3,PM Peak,9,27,60,60,60,FALSE
+88L,88L,Thornton/Commerce City Limited,Bus,3,PM Peak,8,59,60,60,60,FALSE
+72,72,72nd Avenue,Bus,3,PM Peak,8,57,61,60,60.7,FALSE
+36,36,Fort Logan,Bus,3,PM Peak,8,59,60,60,60,FALSE
+1,1,West 1st Avenue,Bus,3,PM Peak,8,60,60,60,60,FALSE
+402L,402L,Highlands Ranch Parkway,Bus,3,PM Peak,8,59.6,60,60,60,FALSE
+327,327,Eastside Crosstown,Bus,3,PM Peak,8,60,60,60,60,FALSE
+AL,AL,Longmont / Denver Airport,Bus,3,PM Peak,8,60,68,60,65.6,FALSE
+59,59,West Bowles,Bus,3,PM Peak,8,59,60,60,60,FALSE
+NB2,NB2,Boulder/ Nederland/ Eldora,Bus,3,PM Peak,3,60,60,60,60,FALSE
+23,23,West 20th Ave,Bus,3,PM Peak,7,58,62,60,61.4,FALSE
+53,53,North Sheridan,Bus,3,PM Peak,8,59,60,60,60,FALSE
+323,323,Skyline Crosstown,Bus,3,PM Peak,8,60,69,60,66.3,FALSE
+208,208,Iris / Valmont,Bus,3,PM Peak,8,50,60,60,60,FALSE
+24,24,University Blvd,Bus,3,PM Peak,9,16,67.9,60,65.5,FALSE
+520,520,Brighton,Bus,3,PM Peak,8,60,60,60,60,FALSE
+139,139,Quincy Avenue,Bus,3,PM Peak,8,60,63,60,62.1,FALSE
+116X,116X,South Simms Express,Bus,3,PM Peak,3,59.8,60.1,60,60.1,FALSE
+3L,3L,East Alameda Limited,Bus,3,PM Peak,3,60,61,60.5,60.9,FALSE
+9,9,West 10th Avenue,Bus,3,PM Peak,8,60,65,61,63.8,FALSE
+169,169,Buckley Road,Bus,3,PM Peak,8,53.7,67,63.7,66,FALSE
+483,483,Parker Road - Lincoln Ave,Bus,3,PM Peak,8,59.4,75,64,70.5,FALSE
+112,112,West 112th Avenue,Bus,3,PM Peak,7,55,70,67,69.1,FALSE
+FF4,FF4,Flatiron Flyer,Bus,3,PM Peak,7,36.8,78,69,75.3,FALSE
+PD,PD,Parker / Denver,Bus,3,PM Peak,3,60.1,77.9,69,75.2,FALSE
+AB1,AB1,Boulder / Denver Airport,Bus,3,PM Peak,7,30,91,75.5,86.4,FALSE
+LD1,LD1,Longmont / Denver,Bus,3,PM Peak,6,40,78,78,78,FALSE
+FF5,FF5,Flatiron Flyer,Bus,3,PM Peak,5,58,97,78.5,91.5,FALSE
+LX2,LX2,Longmont I-25 Express,Bus,3,PM Peak,4,70,110,90,104,FALSE
+GS,GS,Golden / Boulder,Bus,3,PM Peak,4,86,92,92,92,FALSE
+225T,225T,Boulder / Lafayette via Baseline,Bus,3,PM Peak,4,142,146.2,146.2,146.2,FALSE
+228A,228A,Lafayette / Louisville / Broomfield,Bus,3,PM Peak,4,60,181,181,181,FALSE
+145X,145X,Brighton / Denver Airport ,Bus,3,PM Peak,1,NA,NA,NA,NA,FALSE
+FREE,FreeRide,16th Street FreeRide,Bus,4,Late Night,87,4.4,21,6.8,8.8,TRUE
+0,0,Broadway,Bus,4,Late Night,38,14.4,30,15,30,TRUE
+15,15,East Colfax Avenue,Bus,4,Late Night,48,10,30,15,15.7,TRUE
+SKIP,SKIP,Broadway,Bus,4,Late Night,36,13,30,15,27.3,TRUE
+31,31,Federal Blvd ,Bus,4,Late Night,32,15,31,15,30,TRUE
+17,17,Golden/Colfax,Bus,4,Late Night,24,27.4,31.6,30,30,FALSE
+45,45,Montbello via 51st/GVR,Bus,4,Late Night,25,28.5,151.1,30,30,FALSE
+83D,83D,Cherry Creek / Parker Rd Limited,Bus,4,Late Night,7,29.6,30,30,30,FALSE
+101T,T,Lincoln Station to Alameda Station,Light rail,4,Late Night,20,30,38,30,30,FALSE
+107R,R,RidgeGate Parkway Station to Peoria Station,Light rail,4,Late Night,21,30,30,30,30,FALSE
+43,43,Martin Luther King Blvd,Bus,4,Late Night,24,29,60,30,30.4,FALSE
+103W,W,Union Station to Jefferson County Government Center-Golden Station,Light rail,4,Late Night,30,15,30,30,30,FALSE
+A,A,Union Station to Denver Airport Station,Commuter rail,4,Late Night,26,30,30,30,30,FALSE
+JUMP,JUMP,Boulder / Lafayette/ Erie,Bus,4,Late Night,17,25,60,30,32.9,FALSE
+40,40,Colorado Boulevard,Bus,4,Late Night,23,28.4,31,30,30.9,FALSE
+FF1,FF1,Flatiron Flyer,Bus,4,Late Night,22,28,31,30,30,FALSE
+83L,83L,Cherry Creek / Parker Rd Limited,Bus,4,Late Night,21,15,30,30,30,FALSE
+133,133,Hampden/Tower,Bus,4,Late Night,17,30,68,30,60,FALSE
+12,12,South Downing,Bus,4,Late Night,23,30,30,30,30,FALSE
+73,73,Quebec Street,Bus,4,Late Night,21,30,31.7,30,30,FALSE
+35,35,Hampden Avenue,Bus,4,Late Night,12,26,33,30,31.3,FALSE
+117N,N,Union Station to Eastlake & 124th Station,Commuter rail,4,Late Night,16,30,30,30,30,FALSE
+113G,G,Union Station to Wheat Ridge Ward Station,Commuter rail,4,Late Night,21,30,30,30,30,FALSE
+15L,15L,East Colfax Limited,Bus,4,Late Night,24,15,60,30,31,FALSE
+BOND,Bound,30th Street,Bus,4,Late Night,20,15,30,30,30,FALSE
+153,153,Chambers Road,Bus,4,Late Night,22,15,60,30,40.1,FALSE
+10,10,East 12th Avenue,Bus,4,Late Night,18,29,30,30,30,FALSE
+30,30,South Federal Blvd,Bus,4,Late Night,21,28,60,30,30,FALSE
+42,42,Montbello via Albrook/GVR,Bus,4,Late Night,24,25,145.7,30,32.3,FALSE
+7,7,North Washington,Bus,4,Late Night,19,25,60,30,58.5,FALSE
+204,204,Table Mesa / Moorhead / North 19th,Bus,4,Late Night,10,26,36,30,33.3,FALSE
+0B,0B,South Broadway,Bus,4,Late Night,21,29,31,30,30,FALSE
+21,21,East Evans Avenue,Bus,4,Late Night,21,30,30,30,30,FALSE
+105,105,Havana Street,Bus,4,Late Night,27,15,112,30,32.3,FALSE
+16,16,West Colfax Avenue,Bus,4,Late Night,25,15,33.7,30,30.4,FALSE
+101E,E,Union Station to RidgeGate Parkway Station,Light rail,4,Late Night,22,15,30,30,30,FALSE
+121,121,Peoria Street,Bus,4,Late Night,23,18,36,30,30,FALSE
+101C,C,Union Station to Mineral Station,Light rail,4,Late Night,20,30,30,30,30,FALSE
+130,130,Yale / Buckley,Bus,4,Late Night,15,30,68,30.5,60,FALSE
+38,38,West 38th Avenue,Bus,4,Late Night,16,26,65,32,60.5,FALSE
+48,48,East 48th Avenue / Commerce City,Bus,4,Late Night,15,26,60,32.2,36.6,FALSE
+324,324,Main Street Crosstown,Bus,4,Late Night,6,30,35,32.5,34.3,FALSE
+120X,120X,Wagon Road / Thornton Express,Bus,4,Late Night,14,29,60,40,60,FALSE
+3,3,Alameda Avenue,Bus,4,Late Night,16,9.1,85,42.5,81.3,FALSE
+104L,104L,Wagon Road / Denver Airport Limited,Bus,4,Late Night,15,27,90,45,67.5,FALSE
+19,19,North Pecos ,Bus,4,Late Night,11,33,75,56,69.3,FALSE
+AB2,AB2,Boulder / Denver Airport,Bus,4,Late Night,3,25,88,56.5,78.6,FALSE
+483,483,Parker Road - Lincoln Ave,Bus,4,Late Night,3,58.3,58.3,58.3,58.3,FALSE
+225D,225D,Boulder / Lafayette via Baseline,Bus,4,Late Night,6,55,62,58.5,61,FALSE
+99,99,South Kipling Street,Bus,4,Late Night,8,60,60,60,60,FALSE
+32,32,West 32nd Avenue,Bus,4,Late Night,6,59,60,60,60,FALSE
+AT,AT,Arapahoe County / Denver Airport,Bus,4,Late Night,12,10,60,60,60,FALSE
+93L,93L,N Colorado Blvd Limited,Bus,4,Late Night,4,60,60,60,60,FALSE
+402L,402L,Highlands Ranch Parkway,Bus,4,Late Night,7,57,60,60,60,FALSE
+24,24,University Blvd,Bus,4,Late Night,10,56.4,60,60,60,FALSE
+100,100,Kipling Street,Bus,4,Late Night,7,60,60,60,60,FALSE
+120,120,120th Avenue Crosstown,Bus,4,Late Night,6,55,60,60,60,FALSE
+139,139,Quincy Avenue,Bus,4,Late Night,9,59,60,60,60,FALSE
+135,135,Smoky Hill Road,Bus,4,Late Night,8,59,90,60,80.7,FALSE
+51,51,Sheridan Blvd,Bus,4,Late Night,15,30,61,60,60.3,FALSE
+287,287,Longmont / Broomfield,Bus,4,Late Night,6,35,60,60,60,FALSE
+20,20,20th Avenue,Bus,4,Late Night,9,60,60,60,60,FALSE
+36,36,Fort Logan,Bus,4,Late Night,10,60,60,60,60,FALSE
+49,49,Denver/ Commerce City,Bus,4,Late Night,11,30,60,60,60,FALSE
+52,52,W 52nd Avenue / South Bannock,Bus,4,Late Night,9,50,66.3,60,64.4,FALSE
+44,44,44th Avenue,Bus,4,Late Night,10,56.2,60,60,60,FALSE
+88,88,Central Park/ 72nd Ave Station,Bus,4,Late Night,11,57.6,60,60,60,FALSE
+4,4,Morrison Road,Bus,4,Late Night,4,59.8,60,60,60,FALSE
+22,22,West Evans Avenue,Bus,4,Late Night,13,30,60,60,60,FALSE
+228A,228A,Lafayette / Louisville / Broomfield,Bus,4,Late Night,4,60,60,60,60,FALSE
+53,53,North Sheridan,Bus,4,Late Night,6,60,60,60,60,FALSE
+AB1,AB1,Boulder / Denver Airport,Bus,4,Late Night,12,30,90,60,87.8,FALSE
+205,205,28th St / Gunbarrel ,Bus,4,Late Night,7,30,60,60,60,FALSE
+65,65,Monaco Parkway,Bus,4,Late Night,11,30,60,60,60,FALSE
+ART,ART,Art District Connector,Bus,4,Late Night,15,27,61,60,60.1,FALSE
+AL,AL,Longmont / Denver Airport,Bus,4,Late Night,5,60,60,60,60,FALSE
+113B,B,Union Station to Westminster Station,Commuter rail,4,Late Night,9,60,60,60,60,FALSE
+DASH,DASH,Boulder / Lafayette via Louisville,Bus,4,Late Night,14,56,66,60,63,FALSE
+88L,88L,Thornton/Commerce City Limited,Bus,4,Late Night,4,60,60,60,60,FALSE
+169,169,Buckley Road,Bus,4,Late Night,13,59,60,60,60,FALSE
+120L,120L,Thornton / Brighton,Bus,4,Late Night,10,59.3,60,60,60,FALSE
+6,6,East 6th Avenue ,Bus,4,Late Night,12,26,60,60,60,FALSE
+28,28,28th Avenue,Bus,4,Late Night,9,60,61.3,60,60.7,FALSE
+76,76,Wadsworth Blvd,Bus,4,Late Night,15,30,70,60,62.5,FALSE
+BOLT,BOLT,Boulder / Longmont,Bus,4,Late Night,13,26,60,60,60,FALSE
+11,11,Mississippi Avenue,Bus,4,Late Night,10,53,61,60.1,60.6,FALSE
+66,66,Arapahoe Road,Bus,4,Late Night,6,60,60.2,60.1,60.2,FALSE
+1,1,West 1st Avenue,Bus,4,Late Night,7,59.3,60.2,60.1,60.2,FALSE
+92,92,92nd Avenue,Bus,4,Late Night,6,57,62.5,61.3,62.2,FALSE
+225,225,Boulder / Lafayette via Baseline,Bus,4,Late Night,6,53.2,70,65,68.5,FALSE
+59,59,West Bowles,Bus,4,Late Night,5,58,70,70,70,FALSE
+NB2,NB2,Boulder/ Nederland/ Eldora,Bus,4,Late Night,7,60,130,95,119.5,FALSE
+327,327,Eastside Crosstown,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+FF5,FF5,Flatiron Flyer,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+14,14,West Florida Avenue,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+169L,169L,Buckley / Tower DIA Limited,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+520,520,Brighton,Bus,4,Late Night,2,NA,NA,NA,NA,FALSE
+8,8,North Broadway / Huron,Bus,4,Late Night,2,NA,NA,NA,NA,FALSE
+9,9,West 10th Avenue,Bus,4,Late Night,2,NA,NA,NA,NA,FALSE
+80,80,80th Avenue,Bus,4,Late Night,2,NA,NA,NA,NA,FALSE
+37,37,Smith Road Industrial,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+323,323,Skyline Crosstown,Bus,4,Late Night,2,NA,NA,NA,NA,FALSE
+326,326,Westside Crosstown,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE
+FF4,FF4,Flatiron Flyer,Bus,4,Late Night,1,NA,NA,NA,NA,FALSE

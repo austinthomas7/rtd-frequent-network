@@ -1,0 +1,229 @@
+---
+title: "Why RTD headways vary within a period"
+subtitle: "A supporting note to the frequent-routes table"
+author: "Austin Foster"
+date: today
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(readr)
+source("R/config.R")
+out <- "output"
+routes  <- read_csv(file.path(out, "route_headways.csv"), show_col_types = FALSE)
+rdh     <- read_csv(file.path(out, "route_direction_headways.csv"), show_col_types = FALSE)
+gaps    <- read_csv(file.path(out, "route_gap_detail.csv"), show_col_types = FALSE)
+pattern <- read_csv(file.path(out, "route_period_pattern.csv"), show_col_types = FALSE)
+periods <- read_csv(file.path(out, "periods.csv"), show_col_types = FALSE)
+params  <- read_csv(file.path(out, "params.csv"), show_col_types = FALSE)
+
+pct <- function(x) paste0(format(round(x, 1), nsmall = 1), "%")
+fmt <- function(x) ifelse(is.na(x), "–", ifelse(x == round(x), sprintf("%.0f", x), sprintf("%.1f", x)))
+service_day <- format(params$service_date[1], "%A, %B %d, %Y")
+
+# The routes in the main page's frequent-routes table
+frequent_ids <- routes |> filter(is_frequent) |> distinct(route_id)
+route_names  <- routes |> distinct(route_id, route_short_name, route_long_name)
+t2_gaps <- gaps |> semi_join(frequent_ids, by = "route_id")
+
+# Gaps that start and end inside one period, leaving out the first and last
+# trips of the day (those have no regular pattern to compare against)
+inside <- t2_gaps |>
+  filter(!crosses_period_boundary, explanation != "First or last trips of the day")
+off <- inside |> filter(!near_standard)
+```
+
+## The question
+
+The frequent-routes table on the [main page](index.qmd) shows each route's median headway, and [Additional Data](additional-data.qmd) lists its shortest and longest gap in each period. Some ranges are wide (4 to 15 minutes, or 15 to 30), and some gaps are not round numbers like 10 or 15. GTFS is a timetable, not a record of where buses actually were, so none of this is traffic delay. It is something the schedule does on purpose. This note checks every gap between consecutive trips on the `r nrow(frequent_ids)` routes in that table, using the `r service_day` schedule, and sorts each one by cause.
+
+## Short answers
+
+- **The analysis only counts gaps inside each period.** A gap that runs across a period boundary, or from the last trip of the night to 3 AM, used to inflate the longest gap in many cells. Those gaps are now left out, so every range in the table is a real scheduled gap.
+- **Inside a period, the schedules are regular.** `r pct(100 * mean(inside$near_standard))` of gaps that fall wholly inside one period are within a minute of a standard headway. Small differences of a minute or less come from times RTD estimates between timepoints, rounding to whole minutes, and small changes in running time.
+- **A few routes stack trips into the peaks.** Some routes double their frequency in both peaks, one adds trips only in the peak direction, and one adds closely spaced trips in the morning and mid-afternoon. These are deliberate and show up as several standard headways mixed in one period.
+- **Irregular gaps happen at predictable times.** They cluster from 5 to 7 PM, when afternoon running times are longest and service steps down to evening levels. Smaller clusters appear as service ramps up in the morning and in 30-minute evening service. They are not random one-offs. GTFS doesn't include operator assignments, so driver changes can't be checked directly.
+
+## How the gaps were checked
+
+`sql/06_headway_diagnostics.sql` lists every trip at the stop each route-direction is measured at (the same stop the main analysis uses). It pairs each trip with the one before it and records:
+
+- the period the gap falls in, or the boundary it crosses;
+- the nearest **standard headway**: 3, 4, 5, 6, 7.5, 10, 12, 15, 20, 30, 45, 60, or 90 minutes. These values repeat evenly within an hour or three hours, so riders see the same minutes past the hour. Eight trips an hour is a 7.5-minute headway, which a timetable in whole minutes has to write as alternating 7 and 8;
+- the same two trips' gap where they **started** their runs, and each trip's scheduled **running time** to the stop;
+- whether the stop is a **timepoint**. RTD schedules exact times only at timepoints and estimates the times at stops in between, which produces values like 14.4 or 18.9.
+
+Each gap then gets the first explanation that fits, tested in this order:
+
+| Explanation | Test |
+|---|---|
+| Standard headway | Exactly a standard value |
+| Within 1 min of standard | Off by a minute or less: an estimated stop time, a running-time change, or rounding |
+| Extra trip added between regular trips | This gap plus a neighbouring gap add up to the regular headway, and the regular headway resumes after it |
+| Transition between service levels | The regular headway before the gap differs from the one after it (e.g. 15 → 7.5) |
+| Trips start at different places | The two trips begin at different stops (a variant, short turn, or bus pulling out of a garage) |
+| Running time changed between trips | Same starting stop, and most of the difference comes from one trip being scheduled to take longer |
+| Uneven departures from the start of the route | Same starting stop, and the trips were already unevenly spaced when they left it |
+
+## 1. Which gaps the analysis counts
+
+The main analysis counts a gap only when both trips leave inside the same period. The table below shows how many gaps on the frequent routes that rule leaves out, and why.
+
+```{r}
+#| label: tbl-excluded
+#| tbl-cap: "Gaps between consecutive trips on the frequent routes, by whether the main analysis counts them"
+#| echo: false
+t2_gaps |>
+  mutate(Status = case_when(
+    !crosses_period_boundary          ~ "Counted: both trips inside one period",
+    grepl("^Crosses", period)         ~ "Left out: crosses into the next period",
+    TRUE                              ~ "Left out: before 6 AM, outside the four periods")) |>
+  count(Status, name = "Gaps") |>
+  mutate(Share = pct(100 * Gaps / sum(Gaps))) |>
+  knitr::kable(align = "lrr")
+```
+
+The analysis no longer measures the wait after a route's last trip either. Under the earlier version, that wait ran to the end of the period, so a route ending at 11 PM showed a four-hour "gap" in Late Night.
+
+The rule has a cost. A route that runs every 10 minutes from 6 to 7 AM and then stops looks frequent for the whole AM Peak, because the wait after its last trip isn't counted. To keep a pair of closely spaced trips (such as a school tripper) from qualifying on its own, a route-direction needs at least 4 trips in the period to count as frequent.
+
+Even with only in-period gaps, some cells still have wide ranges. Most are routes that change frequency partway through a period: starting the AM Peak at 30 minutes before stepping up to 15, or dropping from 15 to 30 between about 6 and 7 PM. The median headway ignores those few long gaps and reports what the route runs for most of the period. The next sections explain the rest.
+
+## 2. Are deviations from standard headways sensible? Mostly, yes
+
+```{r}
+#| label: tbl-explanations
+#| tbl-cap: "Every gap wholly inside one period on the frequent routes, by explanation"
+#| echo: false
+inside |>
+  count(Explanation = explanation, sort = TRUE) |>
+  mutate(Share = pct(100 * n / sum(n))) |>
+  rename(Gaps = n) |>
+  knitr::kable(align = "lrr")
+```
+
+Nearly every gap is a standard value or within a minute of one. The one-minute differences are not real irregularities. They come from three sources:
+
+- **Estimated stop times.** Most bus routes are measured at a busy stop that is not a timepoint. RTD sets times at timepoints and estimates the times between them, so a 15-minute headway can show up as 14.4 or 15.6 minutes.
+- **Running time changes.** When the scheduled trip time grows by a minute heading into the peak, one gap partway along the route stretches to 16 minutes and the gaps after it return to 15.
+- **Whole-minute rounding.** A 7.5-minute headway is published as 7, 8, 7, 8. A 10-minute headway sometimes appears as 9 and 11, and 15 as 14 and 16.
+
+Larger differences are rare (`r nrow(off)` gaps, `r pct(100 * nrow(off) / nrow(inside))` of the total). They are listed one by one in section 5.
+
+## 3. Do some routes stack trips into the commute peaks?
+
+Yes, but only a handful. Most frequent routes run the same 15-minute headway from about 6 AM to 7 PM, with no peak increase. The routes below run at least 15% more trips per hour in their busiest peak direction than at mid-day.
+
+```{r}
+#| label: tbl-peaking
+#| tbl-cap: "Scheduled trips per hour by direction, routes with peak or directional stacking"
+#| echo: false
+tph <- rdh |>
+  semi_join(frequent_ids, by = "route_id") |>
+  left_join(periods |> select(period, start_sec, end_sec), by = "period") |>
+  mutate(tph = n_trips * 3600 / (end_sec - start_sec)) |>
+  select(route_id, direction_id, period, tph) |>
+  pivot_wider(names_from = period, values_from = tph)
+# keep routes where the busiest peak direction runs at least 15% more
+# trips per hour than the busiest mid-day direction
+stacked <- tph |>
+  group_by(route_id) |>
+  filter(max(`AM Peak`, `PM Peak`, na.rm = TRUE) >= 1.15 * max(coalesce(`Mid-Day`, 0))) |>
+  ungroup()
+stacked |>
+  left_join(route_names, by = "route_id") |>
+  mutate(across(any_of(PERIODS), ~ ifelse(is.na(.x), "–", sprintf("%.1f", .x)))) |>
+  arrange(route_short_name, direction_id) |>
+  select(Route = route_short_name, Name = route_long_name, Direction = direction_id, any_of(PERIODS)) |>
+  knitr::kable(align = "llcrrrr")
+```
+
+These match patterns in the timetable:
+
+- **43 (Martin Luther King Blvd)** runs every 7.5 minutes in both directions in both peaks (about 6–9:30 AM and 3–6 PM) and every 15 minutes at mid-day. That's why its peak ranges are so wide: 7 and 8 alternate, and the 23- and 32-minute gaps are the steps up from and down to 30-minute service, which fall inside the peak periods.
+- **15L (East Colfax Limited)** stacks trips in the commute direction only: every 7.5 minutes toward downtown in the morning and away from it in the afternoon, with the other direction at 10 minutes. This is the clearest commute-flow pattern in the network.
+- **SKIP (Broadway, Boulder)** runs every 10 minutes and adds trips 5 minutes behind regular ones from about 7:15 to 9:45 AM and 2:45 to 4:30 PM. The afternoon timing fits school and university schedules along Broadway better than a 5 PM commute.
+- **12 (South Downing)**, **120X (Wagon Road / Thornton Express)** and **204 (Table Mesa / Moorhead / North 19th)** run every 15 minutes in the peaks and every 30 at mid-day. The 120X and 204 only qualify because the median counts their 15-minute stretch, which covers most of the peak. The 204 starts its morning 15-minute service around 7:45, so it falls just short in the AM Peak.
+- **E Line** has a few extra morning trains a few minutes apart around 6:15 AM. These are trains entering service at different stations before settling into 15-minute service, so the E's AM Peak range starts below 3 minutes.
+- **Free MetroRide** runs only in the peaks, every 10 minutes, with no service at mid-day.
+
+Stacked trips don't produce off-pattern numbers. They produce several standard headways in one period (5 and 10, or 7.5 and 15), and the min–max range spans them. The pattern table in `output/route_period_pattern.csv` lists the standard headways each route uses in each period.
+
+## 4. One-offs, or predictable times?
+
+```{r}
+#| label: fig-off-by-hour
+#| fig-cap: "Gaps more than 1 minute from a standard headway on the frequent routes, by the hour the later trip leaves. Shading marks the four analysis periods."
+#| fig-height: 3.5
+#| echo: false
+off_hour <- off |>
+  mutate(hour = floor(dep_sec / 3600) %% 24,
+         cause = case_when(
+           explanation == "Transition between service levels" ~ "Service level change",
+           explanation == "Running time changed between trips" ~ "Running time change",
+           explanation == "Uneven departures from the start of the route" ~ "Uneven start times",
+           TRUE ~ "Extra trip or variant")) |>
+  count(hour, cause)
+# light bands behind the AM Peak and PM Peak, to show where the periods fall
+bands <- periods |>
+  filter(period %in% c("AM Peak", "PM Peak")) |>
+  mutate(xmin = start_sec / 3600 - 0.5, xmax = end_sec / 3600 - 0.5)
+ggplot(off_hour, aes(hour, n, fill = cause)) +
+  geom_rect(data = bands, aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
+            inherit.aes = FALSE, fill = "grey92") +
+  annotate("text", x = (bands$xmin + bands$xmax) / 2, y = Inf, label = bands$period,
+           vjust = 1.4, size = 3.2, colour = "grey35") +
+  geom_col(width = 0.8, color = "white", linewidth = 0.3) +
+  scale_x_continuous(breaks = seq(0, 23, 3), limits = c(-0.5, 23.5),
+                     labels = c("12 AM", "3 AM", "6 AM", "9 AM", "12 PM", "3 PM", "6 PM", "9 PM")) +
+  scale_y_continuous(breaks = function(l) seq(0, ceiling(l[2]), 2),
+                     expand = expansion(mult = c(0, 0.15))) +
+  scale_fill_viridis_d(option = "viridis", end = 0.9) +
+  labs(x = NULL, y = "Irregular gaps", fill = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "top", panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank())
+```
+
+The irregular gaps are not spread evenly across the day. The largest cluster is 5 to 7 PM. Most fall into three situations:
+
+- **Where service changes level.** Going from 30-minute early-morning service to 7.5 minutes, or from 15 to 30 in the evening, usually leaves one odd gap (23, 26, 32) while the schedule shifts to the new spacing.
+- **In the PM peak.** Scheduled running times are longest in afternoon traffic. Schedulers usually move the starting times to keep the spacing even partway along the route, but when running time jumps by several minutes between consecutive trips, a 17- or 18-minute gap appears at the measured stop.
+- **Late at night.** Several routes run "30-minute" evening service with gaps of 31 to 34 minutes. These are uneven departures from the start of the route, likely from fitting a round-trip time that doesn't divide evenly into 30 minutes.
+
+**Driver changes.** GTFS records which vehicle runs each trip (`block_id`) but not which operator, so driver reliefs can't be identified. As a partial check, the vehicle blocks were reviewed for the unevenly spaced trips on this schedule. In most cases the bus had 10 to 25 minutes of layover before the trip, so a late-arriving bus did not force the odd spacing. It was written into the schedule, possibly for a relief or a timed transfer that GTFS doesn't record.
+
+## 5. Every irregular gap on the frequent routes
+
+Each row is a gap wholly inside one period that is more than one minute from a standard headway. "Before" and "after" are the neighbouring gaps, and "at start" is the same pair of trips' gap where they began their runs. Running times are in minutes from each trip's first stop to the measured stop.
+
+```{r}
+#| label: tbl-log
+#| tbl-cap: "Irregular gaps on the frequent routes (minutes)"
+#| echo: false
+off |>
+  left_join(route_names, by = "route_id") |>
+  arrange(route_short_name, direction_id, dep_sec) |>
+  transmute(Route = route_short_name, Dir = direction_id, Period = period, `Leaves` = substr(format(dep_time), 1, 5),
+            Before = fmt(headway_before), Gap = fmt(headway_min), After = fmt(headway_after),
+            `At start` = fmt(origin_headway_min),
+            `Running time` = paste0(fmt(prev_running_min), " → ", fmt(running_min)),
+            Explanation = explanation) |>
+  knitr::kable(align = "lcllrrrrcl")
+```
+
+Three cases worth a closer look. The second involves gaps that land on standard values, so it doesn't appear in the table:
+
+- **73, 7:31 AM, 1-minute gap.** The 7:14 trip continues onto Route 11 (headsign "Leetsdale 11 I-25/Broadway") and runs one minute ahead of the regular 7:15 trip. The 73 effectively gets an extra peak trip from an interlined bus.
+- **73, about 4:40 PM, 4 then 11 minutes.** A short-turn trip starts partway along the route and slips in between two regular 15-minute trips during the PM peak.
+- **12, around 9:30–10 AM, 5 then 25 minutes.** The 12 alternates its full route with a short "Corona St & Colfax via 30th" pattern. When it drops from 15- to 30-minute service, the two patterns briefly stop interleaving evenly.
+
+## Limitations
+
+- **Schedule only.** This explains the published timetable. Actual gaps on the street vary more because of traffic and bunching, which the schedule-only GTFS can't show.
+- **One measuring stop per route-direction.** A gap that looks uneven at the measured stop can be even at the terminal, and the reverse. The running-time and starting-gap columns show which applies.
+- **"Within a minute" is a judgment call.** A two-minute tolerance would move a few more gaps into the regular group without changing any conclusion here.

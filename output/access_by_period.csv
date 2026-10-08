@@ -1,0 +1,7 @@
+walkshed,total_pop,pop_near_frequent,pct_pop_near,zero_car_hh,zero_car_hh_near,pct_zero_car_near,pct_all_hh_near
+AM Peak,3245276,429126,13.2,76942,25486,33.1,14.8
+Mid-Day,3245276,384219,11.8,76942,24065,31.3,13.5
+PM Peak,3245276,425469,13.1,76942,25327,32.9,14.7
+Late Night,3245276,132555,4.1,76942,11933,15.5,5
+Every period,3245276,132554,4.1,76942,11933,15.5,5
+AM Peak (straight-line),3245276,530634,16.4,76942,29533,38.4,18.2

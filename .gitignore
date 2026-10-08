@@ -1,0 +1,18 @@
+# Raw downloads and the database are large and can be rebuilt with run_all.R
+data/
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Renviron
+
+# Quarto build cache (docs/ IS committed; it is the published site)
+/.quarto/
+index_cache/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+**/*.quarto_ipynb

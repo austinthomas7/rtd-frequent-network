@@ -1,0 +1,89 @@
+---
+title: "Additional Data"
+subtitle: "Median, shortest, and longest headways for the frequent routes, by time of day"
+author: "Austin Foster"
+date: today
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(dplyr)
+library(readr)
+source("R/config.R")
+routes <- read_csv(file.path("output", "route_headways.csv"), show_col_types = FALSE)
+
+fmt <- function(x) ifelse(is.na(x), "–", ifelse(x == round(x), sprintf("%.0f", x), sprintf("%.1f", x)))
+
+# The same routes as the frequent-routes table on the main page:
+# frequent in at least one period
+frequent_ids <- routes |> filter(is_frequent) |> distinct(route_id)
+t2 <- routes |> semi_join(frequent_ids, by = "route_id")
+all_routes <- t2 |> distinct(route_id, route_short_name, route_long_name, mode)
+
+# One table per period. Every route from the main table gets a row, even
+# with no service in that period, so the four tables line up.
+period_table <- function(p) {
+  all_routes |>
+    left_join(filter(t2, period == p), by = c("route_id", "route_short_name", "route_long_name", "mode")) |>
+    mutate(
+      med = ifelse(is.na(median_headway_min), "–",
+                   ifelse(median_headway_min %in% STANDARD_HEADWAYS,
+                          fmt(median_headway_min), paste0(fmt(median_headway_min), "\\*"))),
+      frequent = case_when(is.na(trips_both_dirs)   ~ "No service",
+                           is_frequent              ~ "**Yes**",
+                           TRUE                     ~ "No")
+    ) |>
+    arrange(desc(coalesce(is_frequent, FALSE)), is.na(median_headway_min), median_headway_min, route_short_name) |>
+    transmute(Route = route_short_name, Name = route_long_name, Mode = mode,
+              `Trips (both directions)` = ifelse(is.na(trips_both_dirs), "–", as.character(trips_both_dirs)),
+              `Median headway` = med,
+              `Shortest gap` = fmt(min_headway_min),
+              `Longest gap` = fmt(max_headway_min),
+              Frequent = frequent) |>
+    knitr::kable(align = "lllrrrrl")
+}
+```
+
+These tables hold the detail behind the frequent-routes table on the [main page](index.qmd): the same `r nrow(all_routes)` routes, one table per time period. All headways are in minutes, measured at the stop each route serves most often, in the route's less frequent direction for the median. Only gaps between two trips that both leave inside the period count, so a gap that runs into the next period, or the wait after the last trip of the night, is left out.
+
+- **Median headway** is the typical gap: half the gaps are shorter and half are longer. A route is **frequent** when its median is 15 minutes or less in both directions, with at least 4 trips each way in the period.
+- **Shortest** and **longest gap** are the extremes in either direction. A wide range usually means the route changes frequency partway through the period, for example stepping up from 30 to 15 minutes early in the AM Peak.
+- **\*** marks a median that isn't a standard clock-face headway (`r paste(STANDARD_HEADWAYS, collapse = ", ")` minutes).
+- A dash means no service in that period, or a single trip with no gap to measure.
+
+## AM Peak (6–9 AM)
+
+```{r}
+#| label: tbl-am
+#| tbl-cap: "AM Peak headways, frequent routes (minutes)"
+#| echo: false
+period_table("AM Peak")
+```
+
+## Mid-Day (9 AM–3 PM)
+
+```{r}
+#| label: tbl-midday
+#| tbl-cap: "Mid-Day headways, frequent routes (minutes)"
+#| echo: false
+period_table("Mid-Day")
+```
+
+## PM Peak (3–7 PM)
+
+```{r}
+#| label: tbl-pm
+#| tbl-cap: "PM Peak headways, frequent routes (minutes)"
+#| echo: false
+period_table("PM Peak")
+```
+
+## Late Night (7 PM–3 AM)
+
+```{r}
+#| label: tbl-late
+#| tbl-cap: "Late Night headways, frequent routes (minutes)"
+#| echo: false
+period_table("Late Night")
+```

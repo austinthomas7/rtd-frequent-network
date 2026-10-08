@@ -1,0 +1,5 @@
+period_order,period,start_sec,end_sec
+1,AM Peak,21600,32400
+2,Mid-Day,32400,54000
+3,PM Peak,54000,68400
+4,Late Night,68400,97200
