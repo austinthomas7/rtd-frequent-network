@@ -106,25 +106,16 @@ hw <- routes |>
     period = factor(PERIOD_LABELS[period], levels = PERIOD_LABELS)
   )
 
-# The threshold label runs up the left side of the dashed line. It starts just
-# above the tallest bar left of the line in each panel, so it never covers a bar.
-# (Bins are 5 minutes wide and closed on the right, so a 15-minute route is in
-# the 10-15 bin.)
-threshold_lab <- hw |>
-  mutate(bin = pmax(1, ceiling(median_headway_min / 5))) |>
-  filter(bin <= 3) |>
-  count(period, bin) |>
-  group_by(period) |>
-  summarise(y = max(n) + 1.5, .groups = "drop") |>
-  right_join(tibble(period = factor(PERIOD_LABELS, levels = PERIOD_LABELS)), by = "period") |>
-  mutate(y = coalesce(y, 1.5))
+# The threshold label ends at y = 51.5 in every panel.
+threshold_lab <- tibble(period = factor(PERIOD_LABELS, levels = PERIOD_LABELS),
+                        y = 51.5)
 
 ggplot(hw, aes(median_headway_min, fill = mode)) +
   geom_histogram(binwidth = 5, boundary = 0, color = "white", linewidth = 0.2) +
   geom_vline(xintercept = 15, linetype = "dashed") +
   geom_text(data = threshold_lab, aes(x = 15, y = y), inherit.aes = FALSE,
-            label = "Frequent Service Threshold", angle = 90,
-            hjust = 0, vjust = -0.5, size = 3.2, fontface = "italic") +
+            label = "Freq. Service Limit", angle = 90,
+            hjust = 1, vjust = -0.5, size = 3.2, fontface = "italic") +
   # scales = "free_x" draws an x-axis under every panel; the fixed limits
   # keep all four panels on the same 0-120+ scale so they stay comparable
   facet_wrap(~ period, ncol = 2, scales = "free_x") +
@@ -294,4 +285,4 @@ if (has_access && "AM Peak (straight-line)" %in% acc$walkshed) {
 git clone https://github.com/austinthomas7/rtd-frequent-network
 ```
 
-Then run `R/00_setup.R` once, `run_all.R`, and `quarto render`. All code is on [GitHub](https://github.com/YOUR-USERNAME/rtd-frequent-network).
+Then run `R/00_setup.R` once, `run_all.R`, and `quarto render`. All code is on [GitHub](https://github.com/austinthomas7/rtd-frequent-network).

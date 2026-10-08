@@ -24,13 +24,6 @@ Results are for a typical weekday, Wednesday, September 30, 2026. A route or sto
 
 ![Median headway by route and time of day](images/headways.png)
 
-## Questions
-
-1. How often does each RTD route run in the AM Peak (6–9 AM), Mid-Day (9 AM–3 PM), PM Peak (3–7 PM), and Late Night (7 PM–3 AM)?
-2. Which stops get frequent service (a median gap of 15 minutes or less between buses) in each period?
-3. Who lives within a quarter-mile walk of that service, especially people without a car, and how does that change for people who travel outside the peaks?
-4. Why do scheduled headways vary within a period, and when do they stray from round numbers like 10 or 15?
-
 ## Data
 
 | Source | Use |
